@@ -1,5 +1,9 @@
-Funcionamento do Aplicativo
+##Funcionamento do Aplicativo##
+
+
 O App Lock é projetado para ser simples e eficiente. Aqui está uma visão geral de como ele funciona:
+
+
 
 Inicialização: Ao abrir o aplicativo, ele verifica se o dispositivo possui suporte para NFC. Caso o dispositivo não suporte NFC, uma mensagem será exibida informando o usuário.
 
