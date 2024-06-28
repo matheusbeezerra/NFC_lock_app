@@ -14,3 +14,12 @@ O App Lock é projetado para ser simples e eficiente. Aqui está uma visão gera
 <Fechamento do Cadeado: O usuário pode fechar o cadeado a qualquer momento através do aplicativo. O status do cadeado é atualizado em tempo real, proporcionando feedback imediato ao usuário.>
 
 <Feedback e Segurança: Caso uma tag NFC não reconhecida seja apresentada, o aplicativo emitirá um som de erro e exibirá uma mensagem informando que a chave está incorreta, garantindo a segurança do sistema.>
+
+
+
+
+
+
+
+
+![Captura de tela 2024-06-28 141628](https://github.com/matheusbeezerra/NFC_lock_app/assets/77506878/c636650f-f27d-4e60-baf8-2c902962b342)
