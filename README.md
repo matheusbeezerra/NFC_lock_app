@@ -1,4 +1,4 @@
-##Funcionamento do Aplicativo
+##Funcionamento do Aplicativo##
 
 
 O App Lock é projetado para ser simples e eficiente. Aqui está uma visão geral de como ele funciona:
