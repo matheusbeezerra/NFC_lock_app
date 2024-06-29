@@ -4,6 +4,7 @@ import android.app.Application
 import android.media.MediaPlayer
 import android.nfc.Tag
 import android.util.Log
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
@@ -13,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class LockViewModel(application: Application) : AndroidViewModel(application) {
-    private val _statusMessage = MutableStateFlow("Cadeado fechado")
+    private val _statusMessage = MutableStateFlow("Cadeado Fechado")
     val statusMessage: StateFlow<String> = _statusMessage
 
     private val _isLockOpen = MutableStateFlow(false)
@@ -43,7 +44,7 @@ class LockViewModel(application: Application) : AndroidViewModel(application) {
 
     fun closeLock() {
         _isLockOpen.value = false
-        _statusMessage.value = "Cadeado fechado"
+        _statusMessage.value = "Cadeado Fechado"
     }
 
     fun processTag(tag: Tag) {

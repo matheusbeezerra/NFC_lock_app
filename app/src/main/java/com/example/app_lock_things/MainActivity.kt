@@ -21,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -96,7 +97,6 @@ class MainActivity : ComponentActivity() {
         lockViewModel.processTag(ndef.tag)
     }
 
-
     @Composable
     fun MainScreen(
         statusMessage: String,
@@ -106,52 +106,62 @@ class MainActivity : ComponentActivity() {
         onCloseLock: () -> Unit,
         isNfcSupported: Boolean
     ) {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(R.drawable.background),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.matchParentSize()
+            )
             Column(
                 modifier = Modifier
-                    .padding(innerPadding)
-                    .padding(16.dp),
+                    .padding(50.dp)
+                    .fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Button(onClick = onAssignKey, enabled = isNfcSupported) {
-                    Text("Atribuir chave ao cadeado")
+                    Text("Atribuir chave ao cadeado", color = Color.White)
                 }
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 16.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Button(onClick = onOpenLock, enabled = isNfcSupported) {
-                        Text("Abrir cadeado")
+                    Button(
+                        onClick = onOpenLock,
+                        enabled = isNfcSupported
+                    ) {
+                        Text("Abrir cadeado", color = Color.White)
                     }
-                    Button(onClick = onCloseLock, enabled = isLockOpen && isNfcSupported) {
-                        Text("Fechar cadeado")
+                    Button(
+                        onClick = onCloseLock,
+                        enabled = isNfcSupported
+                    ) {
+                        Text("Fechar cadeado", color = Color.White)
                     }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
                 Image(
-                    painter = painterResource(
-                        id = if (isLockOpen) R.drawable.aberto else R.drawable.fechado
-                    ),
-                    contentDescription = if (isLockOpen) "Cadeado aberto" else "Cadeado fechado",
-                    modifier = Modifier.size(100.dp)
+                    painter = painterResource(if (isLockOpen) R.drawable.aberto else R.drawable.fechado),
+                    contentDescription = if (isLockOpen) "Cadeado Aberto" else "Cadeado Fechado",
+                    modifier = Modifier.size(138.dp)
                 )
-                Text(text = statusMessage, modifier = Modifier.padding(top = 8.dp))
+                Text(text = statusMessage, modifier = Modifier.padding(top = 10.dp))
                 if (!isNfcSupported) {
-                    Text(text = "Este dispositivo não tem suporte a NFC", color = Color.Red)
+                    Text(text = "Este dispositivo não tem suporte a NFC")
                 }
             }
         }
     }
+
 
     @Composable
     @Preview(showBackground = true)
     fun DefaultPreview() {
         App_lock_thingsTheme {
             MainScreen(
-                statusMessage = "Cadeado fechado",
+                statusMessage = "Cadeado Fechado",
                 isLockOpen = false,
                 onAssignKey = {},
                 onOpenLock = {},
